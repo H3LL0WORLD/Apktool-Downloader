@@ -10,15 +10,17 @@
 	Target path where download apktool to
 .PARAMETER DownloadWrapper
 	Download the apktool wrapper?
-	- "so you don’t have to type java -jar apktool.jar over and over."
+	- "so you donâ€™t have to type java -jar apktool.jar over and over."
 .PARAMETER Install
 	Add the apktool directory to the PATH environment variable
 #>
 Param (
 	[Parameter(Mandatory = $False, Position = 0)]
 	[String] $TargetPath = "$env:HOMEDRIVE\Apktool\Apktool.jar",
+	
 	[Parameter(Mandatory = $False, Position = 1)]
-	[Switch] $DownloadWrapper = $True,
+	[Switch] $DownloadWrapper,
+	
 	[Parameter(Mandatory = $False, Position = 2)]
 	[Switch] $Install
 )
