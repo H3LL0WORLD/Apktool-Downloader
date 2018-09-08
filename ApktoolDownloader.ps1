@@ -58,6 +58,13 @@ Write-Host ('[!] Latest version found: ' + $Latest.Version)
 Write-Host  '[>] Downloading...'
 Write-Host ('[+] From : ' + $Latest.Link)
 Write-Host ('[+] To   : ' + $TargetPath)
+
+# If the target directory doesn't exist, create it
+$TargetDirectory = Split-Path -Path $TargetPath
+if (-not (Test-Path -Path $TargetDirectory)) {
+	New-Item -Path $TargetDirectory -ItemType Directory -Force | Out-Null
+}
+
 try {
 	$Apktool = $WebClient.DownloadFile($Latest.Link, $TargetPath)
 	Write-Host '[!] Done'
